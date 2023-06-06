@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.project.cloudy.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+
+
+        <action
+            android:id="@+id/action_currentWeatherFragment_to_searchLocationFragment"
+            app:destination="@id/searchLocationFragment" />
+        <action
+            android:id="@+id/action_currentWeatherFragment_to_forecastWeatherDetailFragment"
+            app:destination="@id/forecastWeatherDetailFragment" />
+        <action
+            android:id="@+id/action_currentWeatherFragment_to_savedWeatherFragment"
+            app:destination="@id/savedWeatherFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/searchLocationFragment"
+        android:name="com.project.cloudy.ui.SearchLocationFragment"
+        android:label="fragment_search_location"
+        tools:layout="@layout/fragment_search_location">
+
+
+        <action
+            android:id="@+id/action_searchLocationFragment_to_weatherDetailsFragment"
+            app:destination="@id/weatherDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.project.cloudy.ui.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/forecastWeatherDetailFragment"
+        android:name="com.project.cloudy.ui.ForecastWeatherDetailFragment"
+        android:label="fragment_forecast_detail"
+        tools:layout="@layout/fragment_forecast_detail" />
+    <fragment
+        android:id="@+id/savedWeatherFragment"
+        android:name="com.project.cloudy.ui.SavedWeatherFragment"
+        android:label="fragment_saved_weather"
+        tools:layout="@layout/fragment_saved_weather" />
+
+    <fragment
+        android:id="@+id/weatherDetailsFragment"
+        android:name="com.project.cloudy.ui.WeatherDetailsFragment"
+        android:label="WeatherDetailsFragment"
+        tools:layout="@layout/fragment_weather_details">
+
+        <argument
+            android:name="locationDetails"
+             app:argType="com.project.cloudy.model.SearchLocationResponseItem"/>
+            </fragment>
+
+
+        </navigation>

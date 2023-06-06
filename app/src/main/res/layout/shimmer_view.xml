@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false">
+
+            <TextView
+                android:id="@+id/shimmerlocationTV2"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/bg_white_background"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="NowWhere" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="210dp"
+                android:layout_height="182dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.229" />
+
+            <TextView
+                android:id="@+id/shimmerdayTv"
+                tools:text="Monday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="#787878"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shimmerlocationTV2" />
+
+            <TextView
+                android:id="@+id/shimmerdateTv"
+                tools:text="22/34/2300"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#787878"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shimmerdayTv" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shimmerweatherIcon"
+
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:background="@drawable/img_background"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toTopOf="@+id/guideline400"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shimmerdateTv" />
+
+            <TextView
+                android:id="@+id/shimmertempTitle"
+                tools:text="Temp ℃"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:background="#787878"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline400" />
+
+            <TextView
+                android:id="@+id/shimmertempText"
+                tools:text="--/--"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#787878"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/shimmertempTitle"
+                app:layout_constraintStart_toStartOf="@+id/shimmertempTitle"
+                app:layout_constraintTop_toBottomOf="@+id/shimmertempTitle" />
+
+            <TextView
+                android:id="@+id/shimmerwindTitle"
+                tools:text="Wind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:background="#787878"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline400" />
+
+            <TextView
+                android:id="@+id/shimmerwindText"
+                tools:text="--/--"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#787878"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/shimmerwindTitle"
+                app:layout_constraintStart_toStartOf="@+id/shimmerwindTitle"
+                app:layout_constraintTop_toBottomOf="@+id/shimmerwindTitle" />
+
+            <TextView
+                android:id="@+id/shimmerhumidityTitle"
+                tools:text="Humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="#787878"
+                app:layout_constraintEnd_toStartOf="@+id/shimmerwindTitle"
+                app:layout_constraintHorizontal_bias="0.432"
+                app:layout_constraintStart_toEndOf="@+id/shimmertempTitle"
+                app:layout_constraintTop_toTopOf="@+id/guideline400" />
+
+            <TextView
+                android:id="@+id/shimmerhumidityText"
+                tools:text="--/--"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#787878"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/shimmerhumidityTitle"
+                app:layout_constraintStart_toStartOf="@+id/shimmerhumidityTitle"
+                app:layout_constraintTop_toBottomOf="@+id/shimmerhumidityTitle" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline300"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="404dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline400"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="317dp" />
+
+            <TextView
+                android:id="@+id/shimmertodayTv"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:visibility="invisible"
+                android:layout_marginTop="32dp"
+                android:background="#787878"
+                android:fontFamily="sans-serif-smallcaps"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline300"
+                tools:text="Today" />
+
+
+            <TextView
+                android:id="@+id/shimmerforecastTv"
+                style="@style/Widget.AppCompat.ActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="See Forecast"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline300" />
+
+            <include
+                android:id="@+id/edit1"
+                layout="@layout/shimmer_hourly_weather_view_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/shimmertodayTv"
+                app:layout_constraintVertical_bias="0.299" />
+
+            <include
+                android:id="@+id/include2"
+                layout="@layout/shimmer_hourly_weather_view_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/edit4"
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintStart_toEndOf="@+id/edit1"
+                app:layout_constraintTop_toBottomOf="@+id/shimmertodayTv"
+                app:layout_constraintVertical_bias="0.299" />
+
+            <include
+                android:id="@+id/edit4"
+                layout="@layout/shimmer_hourly_weather_view_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/shimmertodayTv"
+                app:layout_constraintVertical_bias="0.299" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
