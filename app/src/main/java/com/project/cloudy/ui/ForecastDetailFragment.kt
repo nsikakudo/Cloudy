@@ -1,22 +1,19 @@
 package com.project.cloudy.ui
 
 import android.net.ConnectivityManager
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
-import com.project.cloudy.R
 import com.project.cloudy.databinding.FragmentForecastDetailBinding
 import com.project.cloudy.ui.adapters.ForecastAdapter
 import com.project.cloudy.utils.Resource
-import com.tutorial.weatheria.isConnected
-import com.tutorial.weatheria.makeToast
-import com.tutorial.weatheria.ui.adapters.DailyForecastAdapter
+import com.project.cloudy.isConnected
+import com.project.cloudy.makeToast
+import com.project.cloudy.ui.adapters.DailyForecastAdapter
 
 class ForecastWeatherDetailFragment : Fragment() {
     private var _binding: FragmentForecastDetailBinding? = null
@@ -30,7 +27,7 @@ class ForecastWeatherDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         _binding = FragmentForecastDetailBinding.inflate(inflater, container, false)
         return binding.root
     }

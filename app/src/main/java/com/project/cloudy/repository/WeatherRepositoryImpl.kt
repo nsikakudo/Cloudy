@@ -57,13 +57,11 @@ class WeatherRepositoryImpl @Inject constructor(val api: WeatherApi,val db: Weat
         }
     }
 
-    //REGULAR FORECAST
     override suspend fun getAllWeatherFromDb(): WeatherResponse = db.weatherDao().getWeatherResponse()
     override suspend fun insertAllWeather(weatherResponse: WeatherResponse) = db.weatherDao().insertWeatherResponse(weatherResponse)
     override suspend fun deleteAllWeather() = db.weatherDao().deleteAll()
 
 
-    //SAVED WEATHER
     override suspend fun getAllSavedWeather(): Flow<List<SavedWeather>> = db.savedWeatherDao().getAllSavedWeather()
     override suspend fun insertAllSavedWeather(savedWeather: SavedWeather) = db.savedWeatherDao().insertWeather(savedWeather)
     override suspend fun deleteSavedWeather(savedWeather: SavedWeather) = db.savedWeatherDao().deleteSavedWeather(savedWeather)

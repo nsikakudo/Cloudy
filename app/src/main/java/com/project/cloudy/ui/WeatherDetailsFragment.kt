@@ -11,12 +11,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import coil.load
-import com.project.cloudy.R
 import com.project.cloudy.databinding.FragmentWeatherDetailsBinding
-import com.project.cloudy.model.SavedWeather
 import com.project.cloudy.ui.adapters.HourAdapter
 import com.project.cloudy.utils.Resource
-import com.tutorial.weatheria.makeToast
+import com.project.cloudy.makeToast
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,7 +32,7 @@ class WeatherDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         _binding = FragmentWeatherDetailsBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -45,7 +43,6 @@ class WeatherDetailsFragment : Fragment() {
 
         location =
             "${args.locationDetails.lat},${args.locationDetails.lon}" //or betterstill pass the name
-        //requireActivity().actionBar?.title = args.locationDetails.name
         binding.recentsRv.adapter = adapter
         binding.recentsRv.setHasFixedSize(true)
 
@@ -80,20 +77,12 @@ class WeatherDetailsFragment : Fragment() {
                         dayTv.text = current?.condition?.text
                         val line = checkDateFormat(System.currentTimeMillis())
                         Log.d("TIMEING", "$line")
-                        dateTV.text = checkDateFormat(System.currentTimeMillis())
-                        tempText.text = current?.tempC.toString()
+                        tempText.text = "${current?.tempC}°c"
                         humidityTitle.text = current?.humidity.toString()
-                        windText.text = current?.windMph.toString()
+                        windText.text = "${current?.windMph}Mph"
                         adapter.submitList(response.data?.forecast?.forecastday?.get(0)?.hour)
                         response.data?.forecast?.forecastday?.get(0)?.hour?.get(0)?.condition?.icon
-                        btnSave.setOnClickListener {
-                            val save = SavedWeather(
-                                location = response.data?.location,
-                                current = response.data?.current
-                            )
-                            viewModel.saveToDb(save)
 
-                        }
                     }
                 }
                 is Resource.Failure -> {

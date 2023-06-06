@@ -12,13 +12,10 @@ import com.project.cloudy.model.SearchLocationResponseItem
 class LocationAdapter:ListAdapter<SearchLocationResponseItem, LocationAdapter.ViewHolder>(diffObject) {
 
     inner class ViewHolder(val binding: SearchLocationViewHolderBinding):RecyclerView.ViewHolder(binding.root) {
-//        val binding = view
 
         fun bind(location: SearchLocationResponseItem){
-//            var current = response.data?.current
             binding.nameTv.text = location.name
             binding.regionTv.text = location.region
-//            binding.imgCloud.load("http:${current?.condition?.icon}")
             binding.countryTv.text = location.country
             binding.root.setOnClickListener{
                 listener?.let { it1 -> it1(location) }

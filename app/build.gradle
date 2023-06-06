@@ -103,19 +103,7 @@ dependencies {
 
     //kotlin main coroutines
     implementation"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
-
-
-    // implementation "com.google.firebase:firebase-auth:21.0.6"
-    implementation "com.google.firebase:firebase-auth-ktx:22.0.0"
-
-//    implementation "com.google.firebase:firebase-firestore:24.2.1"
-    implementation "com.google.firebase:firebase-firestore-ktx:24.6.1"
-
-    //  implementation "com.google.firebase:firebase-storage:20.0.1"
-    implementation "com.google.firebase:firebase-storage-ktx:20.2.0"
-
-    //implementation "com.google.firebase:firebase-database:20.0.5"
-    implementation "com.google.firebase:firebase-database-ktx:20.2.2"
+    
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
 

@@ -1,4 +1,4 @@
-package com.tutorial.weatheria
+package com.project.cloudy
 
 import android.Manifest
 import android.content.BroadcastReceiver
@@ -122,10 +122,6 @@ class cb(val context: Context, val application: AppCompatActivity) {
             var isConnected: NetworkState = NetworkState.CONNECTED
         }
 
-        /*declare this in the activity hosting the fragment then pass it to whichever fragment
-        needs it
-               // requireActivity().registerReceiver(cb.NetworkReceiver(),(activity as MainActivity).filter)
-         val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)*/
         @RequiresApi(Build.VERSION_CODES.M)
         override fun onReceive(p0: Context?, p1: Intent?) {
             val manager =
@@ -176,23 +172,8 @@ class cb(val context: Context, val application: AppCompatActivity) {
 
             }
         }
-        //networkManager.requestNetwork(networkRequest, networkCallback)
 
     }
-
-    /* STUDY UP ON LAUNCHING FROM FRAGMENT
-
-    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-    resultLauncher.launch(intent)
-
-    var resultLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            // perform check whether Wifi \ NFC \ Internet connection \ Volume
-        }
-    }*/
-
 
 }
 

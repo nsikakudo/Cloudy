@@ -24,7 +24,6 @@ class ForecastAdapter : ListAdapter<Forecastday, ForecastAdapter.ViewHolder>(dif
                     placeholder(R.drawable.ic_launcher_foreground)
                 }
 
-
                 val dateFormat = SimpleDateFormat("yy-MM-dd", Locale.getDefault())
                 val text = dateFormat.parse(forecastday.date)
                 val dateIndex = text.toString().split(" ")
@@ -33,7 +32,6 @@ class ForecastAdapter : ListAdapter<Forecastday, ForecastAdapter.ViewHolder>(dif
                 dateTV.text = dateIndex[0]
                 Log.d("date", "${dateIndex[0]..dateIndex[2]}")
                 Log.d("date", "$dateIndex")
-                // forecastday.date.. + "${dateIndex[0]..dateIndex[2]}"
             }
         }
 

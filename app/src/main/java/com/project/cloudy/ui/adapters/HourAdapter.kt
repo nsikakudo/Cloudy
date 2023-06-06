@@ -56,6 +56,4 @@ class HourAdapter : ListAdapter<Hour, HourAdapter.ViewHolder2>(diffObject) {
             }
         }
     }
-
-
 }

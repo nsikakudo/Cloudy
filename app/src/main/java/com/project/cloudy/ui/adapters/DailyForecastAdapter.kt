@@ -1,4 +1,4 @@
-package com.tutorial.weatheria.ui.adapters
+package com.project.cloudy.ui.adapters
 
 import android.util.Log
 import android.view.LayoutInflater

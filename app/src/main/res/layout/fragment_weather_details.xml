@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="05/06/2023"
+        android:text="Today"
         android:textColor="@color/white"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -149,7 +149,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="min/Min"
+                        android:text="Temp"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -168,7 +168,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="80dp"
+                    android:layout_marginStart="60dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:paddingVertical="8dp">
@@ -183,7 +183,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Cloud"
+                        android:text="Humidity"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -202,7 +202,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="80dp"
+                    android:layout_marginStart="60dp"
                     android:layout_weight="1"
                     android:layout_marginEnd="16dp"
                     android:orientation="vertical"
@@ -218,7 +218,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Haze"
+                        android:text="Wind"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -243,20 +243,20 @@
 
     </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/bgColor1"
-        android:text="save location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.16" />
+<!--    <Button-->
+<!--        android:id="@+id/btnSave"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:backgroundTint="@color/bgColor1"-->
+<!--        android:text="save location"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.503"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/cardView"-->
+<!--        app:layout_constraintVertical_bias="0.16" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recentsRv"
@@ -269,7 +269,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSave"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
         app:layout_constraintVertical_bias="0.244"
         tools:itemCount="5"
         tools:listitem="@layout/hourly_weather_view_holder" />

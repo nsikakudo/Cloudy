@@ -37,9 +37,7 @@ class SavedWeatherAdapter : ListAdapter<SavedWeather, SavedWeatherAdapter.ViewHo
                 listener?.invoke(savedWeather)
                 true
             }
-
         }
-
     }
 
     companion object {
@@ -70,9 +68,6 @@ class SavedWeatherAdapter : ListAdapter<SavedWeather, SavedWeatherAdapter.ViewHo
         if (pos != null)
             holder.bind(pos)
     }
-
-
-
 
     private  fun getDateFormat(date: String):String{
         val format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")

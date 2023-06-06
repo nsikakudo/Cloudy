@@ -2,19 +2,17 @@ package com.project.cloudy.ui
 
 import android.annotation.SuppressLint
 import android.net.ConnectivityManager
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.project.cloudy.databinding.FragmentSavedWeatherBinding
 import com.project.cloudy.ui.adapters.SavedWeatherAdapter
 import com.project.cloudy.utils.Resource
-import com.tutorial.weatheria.isConnected
+import com.project.cloudy.isConnected
 
 @SuppressLint("MissingPermission")
 class SavedWeatherFragment : Fragment() {
@@ -29,7 +27,7 @@ class SavedWeatherFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         _binding = FragmentSavedWeatherBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -63,15 +61,11 @@ class SavedWeatherFragment : Fragment() {
                 is Resource.Successful -> {
                     binding.progressBar.isVisible = false
                     adapter.submitList(response.data)
-//                    binding.shimmerSaved.root.isVisible = false
                 }
                 is Resource.Failure -> {
                     binding.progressBar.isVisible = false
-//                    binding.weekTV.text = response.msg
                 }
                 is Resource.Loading -> {
-                    // binding.progressBar.isVisible = true
-//                    binding.shimmerSaved.root.isVisible = true
                 }
                 else -> Unit
             }
@@ -85,21 +79,15 @@ class SavedWeatherFragment : Fragment() {
                 is Resource.Successful -> {
                     adapter.submitList(response.data)
                     binding.progressBar.isVisible = false
-//                    binding.shimmerSaved.root.isVisible = false
                 }
                 is Resource.Failure -> {
                     binding.progressBar.isVisible = false
-//                    binding.weekTV.text = "${response.msg} ,check network/Db"
                     val text = "${response.msg}, check network and refresh"
                 }
                 is Resource.Loading -> {
-                    //binding.progressBar.isVisible = true
-//                    binding.shimmerSaved.root.isVisible = true
                 }
                 else-> Unit
             }
         }
     }
-
-
 }

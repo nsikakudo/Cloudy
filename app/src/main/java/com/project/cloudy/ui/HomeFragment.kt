@@ -25,10 +25,10 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.project.cloudy.databinding.FragmentHomeBinding
 import com.project.cloudy.utils.Resource
-import com.tutorial.weatheria.makeToast
+import com.project.cloudy.makeToast
 import com.project.cloudy.ui.adapters.HourAdapter
-import com.tutorial.weatheria.isConnected
-import com.tutorial.weatheria.makeAlert
+import com.project.cloudy.isConnected
+import com.project.cloudy.makeAlert
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -54,10 +54,6 @@ class HomeFragment : Fragment() {
         return localDate.format(dateFormatter)
     }
 
-    // 0:: CHECK PERMISSIONS AT ALL COST...
-    // 1 :: check if gps is enables or network provider is enabled----> let it returns true or false
-    //2 :: if 1 returns true --> get Last Location -- if its null ---request new one ->3
-    // 3:: request Location
     private fun checkGps(): Boolean {
         val manager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return manager.isProviderEnabled(LocationManager.GPS_PROVIDER) || manager.isProviderEnabled(
@@ -96,7 +92,6 @@ class HomeFragment : Fragment() {
     ): View? {
 
         (activity as AppCompatActivity).supportActionBar?.show()
-        // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
@@ -113,27 +108,13 @@ class HomeFragment : Fragment() {
         networkManager =
             activity?.getSystemService(ConnectivityManager::class.java) as ConnectivityManager
 
-        // networkCapabilities = networkManager.getNetworkCapabilities(networkManager.activeNetwork)
-
-        doNetworkOperation()//wholeLogicTest()
+        doNetworkOperation()
 
         binding.btnSearchLocation.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionCurrentWeatherFragmentToSearchLocationFragment())
         }
 
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        super.onCreateOptionsMenu(menu, inflater)
-//        inflater.inflate(com.google.android.gms.location.R.menu.refresh_menu, menu)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            com.google.android.gms.location.R.id.refreshPage -> doNetworkOperation()
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
 
     override fun onPause() {
         super.onPause()
@@ -163,27 +144,21 @@ class HomeFragment : Fragment() {
                     binding.apply {
                         imgWeather.load("http:${current?.condition?.icon}")
                         cityName.text = response.data?.location?.name// current?.lastUpdated
+                        degree.text = "${current?.tempC}°c"
                         dayTv.text = current?.condition?.text
                         dateTV.text = current?.lastUpdated?.let { getDateFormat(it) } ?: current?.lastUpdated
-                        //checkDateFormat(System.currentTimeMillis())
-                        tempText.text = "${current?.tempC}℃"
+                        tempText.text = "${current?.tempC}°c"
                         humidityTitle.text = current?.humidity.toString()
-                        windText.text = current?.windMph.toString()
+                        windText.text = "${current?.windMph}Mph"
                     }
-                    // response.data?.forecast?.forecastday
                     adapter.submitList(response.data?.forecast?.forecastday?.get(0)?.hour)
-//                    binding.shimmerMeow.root.isVisible = false
 
                 }
                 is Resource.Failure -> {
                     binding.progressBar.isVisible = false
-//                    binding.shimmerMeow.root.isVisible = false
                     binding.cityName.text = response.msg
                 }
                 is Resource.Loading -> {
-                    //binding.locationTV.text = "LIST IS FRIGGING EMPTY"
-                    //binding.progressBar.isVisible = true
-//                    binding.shimmerMeow.root.isVisible = true
                 }
                 else -> Unit
             }
@@ -234,8 +209,9 @@ class HomeFragment : Fragment() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val is1 = ActivityCompat.checkSelfPermission(
                 requireContext(),
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
+
             val is2 = ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -265,8 +241,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun runGpsAndMainOperation() {
-        if (true) {
-//        if (checkGps()) {
+//        if (true) {
+        if (checkGps()) {
             fusedLocationProviderClient.lastLocation.addOnCompleteListener(
                 OnCompleteListener {
                     if (it.result == null) {
@@ -323,27 +299,24 @@ class HomeFragment : Fragment() {
                     binding.apply {
                         progressBar.visibility = View.GONE
                         dateTV.isClickable = true
+                        degree.text = "${current?.tempC}°c"
                         imgWeather.load("http:${current?.condition?.icon}")
-                        cityName.text = response.data?.location?.name// current?.lastUpdated
+                        cityName.text = response.data?.location?.name
                         dayTv.text = current?.condition?.text
                         dateTV.text = current?.lastUpdated?.let { getDateFormat(it) }
-                            ?: current?.lastUpdated//checkDateFormat(System.currentTimeMillis())
+                            ?: current?.lastUpdated
                         tempText.text = current?.tempC.toString()
                         humidityTitle.text = current?.humidity.toString()
                         windText.text = current?.windMph.toString()
                         adapter.submitList(response.data?.forecast?.forecastday?.get(0)?.hour)
-//                        binding.shimmerMeow.root.isVisible = false
                     }
                 }
                 is Resource.Failure -> {
                     binding.progressBar.visibility = View.GONE
-//                    binding.shimmerMeow.root.isVisible = false
                     val text = "${response.msg}--Weather returns null, check network and refresh"
                     makeToast(text)
                 }
                 is Resource.Loading -> {
-                    // binding.progressBar.visibility = View.VISIBLE
-//                    binding.shimmerMeow.root.isVisible = true
                     val text = "Loading , Please Wait a moment"
                     makeToast(text)
                 }

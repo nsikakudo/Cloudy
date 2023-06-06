@@ -34,7 +34,6 @@ class WeatherViewModel @Inject constructor(
     private val _savingEvent = Channel<Events>()
     val savingEvents = _savingEvent.receiveAsFlow()
 
-    //////////////////////REGION FOR STILL CHECKING OUT THE CACHING//////////////////////////////
     val frmDab = MutableLiveData<WeatherResponse>()
     val situFrmDab = MutableLiveData<Resource<WeatherResponse>>()
     val savedWeatherResult = MutableLiveData<List<SavedWeather>>()
@@ -51,12 +50,10 @@ class WeatherViewModel @Inject constructor(
                 else -> {
                     situFrmDab.value = Resource.Successful(repository.getAllWeatherFromDb())
                 }
-
             }
         }
     }
 
-    //THIS IS FOR THE NORMAL REQUEST WITHOUT CACHING!!...sorry there's caching now
     fun updateWeather(location: String) {
         weatherForecast.value = Resource.Loading()
         viewModelScope.launch {
@@ -131,7 +128,6 @@ class WeatherViewModel @Inject constructor(
         }
     }
 
-    //REGULAR FORECAST
     private fun getAllWeatherFromDb() {
         viewModelScope.launch {
             repository.getAllWeatherFromDb()
@@ -151,7 +147,6 @@ class WeatherViewModel @Inject constructor(
     }
 
 
-    //SAVED WEATHER
     private suspend fun getAllSavedWeather(): Flow<List<SavedWeather>> =
         repository.getAllSavedWeather()
 
@@ -255,6 +250,4 @@ class WeatherViewModel @Inject constructor(
             }
         }
     }
-
-
 }
